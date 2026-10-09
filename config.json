@@ -1,8 +1,5 @@
 {
-    "DiscordServerId": "DISCORD_GUILD_ID(REQUIRED)",
-    "token": "DISCORD_API_BOT_TOKEN(REQUIRED)",
-    "twitch_clientID": "TWITCH_API_CLIENT_ID(REQUIRED)",
-    "twitch_secret": "TWITCH_API_SECRET(REQUIRED)",
+    "DiscordServerId": "1502417992263405771",
     "cron": "*/10 * * * *",
     "channelID": "1556024132724854885",
     "roleID": "1502678714641813564",

@@ -101,7 +101,7 @@ async function UpdateAuthConfig(){
     let tempData = JSON.parse(fs.readFileSync('./config.json'));
 
     //get the auth key
-    const authKey = await Auth.getKey(tempData.twitch_clientID, tempData.twitch_secret);
+    const authKey = await Auth.getKey(process.env.TWTCLI, process.env.TWTSEC);
     if (!authKey) return;
 
     //write the new auth key
@@ -115,4 +115,4 @@ updateAuth.start()
 Check.start();
 
 //login
-client.login(config.token);
+client.login(process.env.DSC_TKN);
