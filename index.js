@@ -7,6 +7,7 @@ const Stream = require("./modules/getStreams.js")
 const Auth = require("./modules/auth.js")
 const Channel = require("./modules/channelData.js")
 const config = require('./config.json')
+let authToken = null;
 
 //ready
 client.on('ready', () => {
@@ -18,18 +19,23 @@ client.on('ready', () => {
 
 //function that will run the checks
 var Check = new CronJob(config.cron,async function () {
+    if (!authToken) return;   // todavía no hay token
     const tempData = JSON.parse(fs.readFileSync('./config.json'))
 
-    tempData.channels.map(async function (chan, i) {
+    await Promise.all(tempData.channels.map(async function (chan, i) {
         if (!chan.ChannelName) return;
         
-        let StreamData = await Stream.getData(chan.ChannelName, tempData.twitch_clientID, tempData.authToken);
+        let StreamData = await Stream.getData(chan.ChannelName, process.env.TWTCLI, authToken);
+        if (!StreamData || !StreamData.data) {
+            console.error('Error de Twitch:', StreamData);
+            return;
+        }
         if (StreamData.data.length == 0) return
 
         StreamData = StreamData.data[0]
 
         //get the channel data for the thumbnail image
-        const ChannelData = await Channel.getData(chan.ChannelName, tempData.twitch_clientID, tempData.authToken)
+        const ChannelData = await Channel.getData(chan.ChannelName, process.env.TWTCLI, authToken)
         if (!ChannelData) return;
 
         //structure for the embed
@@ -87,8 +93,8 @@ var Check = new CronJob(config.cron,async function () {
             })
         }
         //save config with new data
-        fs.writeFileSync('./config.json', JSON.stringify(tempData))
-    })
+    }))
+    fs.writeFileSync('./config.json', JSON.stringify(tempData))
 });
 
 //update the authorization key every hour
@@ -98,16 +104,12 @@ var updateAuth = new CronJob('0 * * * *', async function () {
 
 //get a new authorization key and update the config
 async function UpdateAuthConfig(){
-    let tempData = JSON.parse(fs.readFileSync('./config.json'));
-
-    //get the auth key
     const authKey = await Auth.getKey(process.env.TWTCLI, process.env.TWTSEC);
-    if (!authKey) return;
-
-    //write the new auth key
-    var tempConfig = JSON.parse(fs.readFileSync('./config.json'));
-    tempConfig.authToken = authKey;
-    fs.writeFileSync('./config.json', JSON.stringify(tempConfig));
+    if (!authKey) {
+        console.error('No se pudo obtener el token de Twitch, revisa TWTCLI y TWTSEC');
+        return;
+    }
+    authToken = authKey;
 }
 
 //start the timers
