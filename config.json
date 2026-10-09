@@ -33,6 +33,30 @@
             "DiscordServer": "",
             "twitch_stream_id": "",
             "discord_message_id": ""
+        },
+        {
+            "ChannelName": "chumo_ast",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
+        },
+        {
+            "ChannelName": "c4n4rion",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
+        },
+        {
+            "ChannelName": "ivaniskitv",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
+        },
+        {
+            "ChannelName": "anixsu",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
         }
     ],
     "authToken": ""
