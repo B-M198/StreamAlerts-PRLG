@@ -4,12 +4,36 @@
     "twitch_clientID": "TWITCH_API_CLIENT_ID(REQUIRED)",
     "twitch_secret": "TWITCH_API_SECRET(REQUIRED)",
     "cron": "*/10 * * * *",
-    "channelID": "CHANNELD_ID(REQUIRED)",
-    "roleID": "ROLE_ID(NOT REQUIRED)",
+    "channelID": "1556024132724854885",
+    "roleID": "1502678714641813564",
     "channels": [
         {
-            "ChannelName": "STREAMER_NAME(REQUIRED)",
-            "DiscordServer": "DISCORD_SERVER_INVITE_URL(NOT REQUIRED)",
+            "ChannelName": "goodgamespain",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
+        },
+        {
+            "ChannelName": "fliyin",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
+        },
+        {
+            "ChannelName": "poyato83",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
+        },
+        {
+            "ChannelName": "alkedun",
+            "DiscordServer": "",
+            "twitch_stream_id": "",
+            "discord_message_id": ""
+        },
+        {
+            "ChannelName": "perfect_nich",
+            "DiscordServer": "",
             "twitch_stream_id": "",
             "discord_message_id": ""
         }
