@@ -1,5 +1,5 @@
 {
-  "name": "twitch-discord-bot",
+  "name": "StreamAlert-PRLG",
   "version": "1.0.0",
   "description": "Notify your community whenever you go live!",
   "main": "index.js",
