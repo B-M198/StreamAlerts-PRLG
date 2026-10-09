@@ -115,4 +115,4 @@ updateAuth.start()
 Check.start();
 
 //login
-client.login(process.env.DSC_TKN);
+client.login(process.env.DSCTKN);
