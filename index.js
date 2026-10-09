@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({
+    ws: { intents: [Discord.Intents.FLAGS.GUILDS] }
+});
 var CronJob = require('cron').CronJob;
 const fs = require('fs')
 
